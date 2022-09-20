@@ -4,46 +4,47 @@ section .text
 main:
     push rbp
     mov rbp , rsp
-    sub rsp , 96
+    sub rsp , 16
 
     xor eax , eax
-    lea rdi , [msg] 
+    lea rdi , [enter_promt] 
     call printf
     
     mov eax , 0
-    lea rdi , [formatn]
+    lea rdi , [input_int]
     lea rsi , [number]
     call scanf
 
     xor eax , eax
-    lea rdi , [formatn]
-    mov edx , [number] 
-    call printf
-
-    xor eax , eax
-    lea rdi , [msg2] 
+    lea rdi , [enter_promt] 
     call printf    
 
     mov eax , 0
-    lea rdi , [formats]
+    lea rdi , [input_str]
     lea rsi , [string]
     call scanf
 
     xor eax , eax
-    lea rdi , [formats]
+    lea rdi , [output_int]
+    mov rsi , [number] 
+    call printf
+
+    xor eax , eax
+    lea rdi , [output_str]
     lea rsi , [string] 
     call printf
 
-    add rsp , 96
+    add rsp , 16
     leave
     ret
 
 
 section .data
-   msg : db " Enter a number : ", 0
-   msg2 : db " Enter a string : ", 0
-   formatn : db "%d", 0
-   formats : dd "%s",10,0
+   enter_promt : db " Enter: ", 0
+   input_int : db "%d", 0
+   input_str : dd "%s",0
+   output_int : db "%d",10, 0
+   output_str : db "%s",10, 0
    string times 100 db 0
    
 section .bss
