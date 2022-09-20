@@ -25,12 +25,12 @@ main :
     lea rdi , [msg] ; first parameter
     call printf    
 
-    lea rdi , [formats]
+    lea rax , [formats]
     lea rsi , [string]
     mov eax , 0
     call scanf
 
-    lea rdi , [formats]
+    lea rax , [formats]
     lea rsi , [string] ; first parameter
     xor eax , eax
     call printf
