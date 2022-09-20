@@ -27,6 +27,6 @@ main :
 
 section .data
    msg : db " Enter a number : " , 0
-   format : db " % d " , 0
+   format : db " %d " , 0
 section .bss
    number resb 4
