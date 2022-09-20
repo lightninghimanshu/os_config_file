@@ -31,7 +31,7 @@ main :
     call scanf
 
     xor eax , eax
-    lea rsi , [formats]
+    lea rdi , [formats]
     mov rsi , [string] ; first parameter
     call printf
 
