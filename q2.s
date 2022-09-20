@@ -11,28 +11,28 @@ main :
     lea rdi , [msg] ; first parameter
     call printf
     
-    mov eax , 0
     lea rdi , [formatn]
     lea rsi , [number]
+    mov eax , 0
     call scanf
 
-    xor eax , eax
     lea rdi , [formatn]
     mov edx , [number] ; first parameter
+    xor eax , eax
     call printf
 
     xor eax , eax
     lea rdi , [msg] ; first parameter
     call printf    
 
-    mov eax , 0
     lea rdi , [formats]
     lea rsi , [string]
+    mov eax , 0
     call scanf
 
-    xor eax , eax
     lea rdi , [formats]
-    mov rsi , [string] ; first parameter
+    lea rsi , [string] ; first parameter
+    xor eax , eax
     call printf
 
     add rsp , 96
