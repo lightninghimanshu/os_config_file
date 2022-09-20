@@ -17,7 +17,7 @@ main :
     call scanf
 
     xor eax , eax
-    lea rdi , [ number ] ; first parameter
+    mov edx , [ number ] ; first parameter
     call printf
 
     add rsp , 16
