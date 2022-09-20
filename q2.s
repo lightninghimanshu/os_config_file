@@ -1,38 +1,52 @@
+extern printf , scanf
 global main
-extern scanf
-extern printf
+section .text
+main:
+    push rbp
+    mov rbp , rsp
+    sub rsp , 96
 
-segment .data
-    int_format_specifier: db "%d", 0
-    string_format_specifier: db "%s", 0
-    string_input times 100 db 0
+    xor eax , eax
+    lea rdi , [msg] 
+    call printf
+    
+    mov eax , 0
+    lea rdi , [formatni]
+    lea rsi , [number]
+    call scanf
 
-segment .bss
-    int_input rseb 4
+    xor eax , eax
+    lea rdi , [formatno]
+    mov edx , [number] 
+    call printf
 
-segment .text
-    main:
-        push rbp ; making the stack frame for main fucntiom
-        mov rbp, rsp ; setting base pointer to stack fram
-        sub rsp, 16 ; making space for variables in stack
+    xor eax , eax
+    lea rdi , [msg2] 
+    call printf    
 
-        lea rdi, [int_format_specifier] ; storing formate specifier's address in rdi [ first arguement]
-        lea rsi, [int_input] ; storing int's address in rsi register [ second arguement]
-        call scanf
+    mov eax , 0
+    lea rdi , [formatsi]
+    lea rsi , [string]
+    call scanf
 
-        lea rdi, [int_format_specifier] ; storing formate specifier's address in rdi [ first arguement]
-        mov edx, [int_input] ; storing int's address in rsi register [ second arguement]
-        call printf
-        
-        lea rdi, [string_format_specifier] ; storing formate specifier's address in rdi [ first arguement]
-        lea rsi, [string_input] ; storing string's address in rsi register [ second arguement]
-        call scanf
+    xor eax , eax
+    lea rdi , [formatso]
+    lea rsi , [string] 
+    call printf
 
-        lea rdi, [string_format_specifier] ; storing formate specifier's address in rdi [ first arguement]
-        lea rsi, [string_input] ; storing string's address in rsi register [ second arguement]
-        call printf
+    add rsp , 96
+    leave
+    ret
 
-        add rsp, 16
-        mov eax, 0 ; making sure that eax is set to zero since eax is reserved for return values of a function
-        leave
-        ret
+
+section .data
+   msg : db " Enter a number : ", 0
+   msg2 : db " Enter a string : ", 0
+   formatni : db "%d", 0
+   formatno : db "%d", 10, 0
+   formatsi : db "%s",0
+   formatso : db "%s",10,0
+   string times 100 db 0
+   
+section .bss
+   number resb 16
