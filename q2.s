@@ -18,7 +18,7 @@ main :
 
     xor eax , eax
     lea rdi , [formatn]
-    lea rsi , [number] ; first parameter
+    mov edx , [number] ; first parameter
     call printf
 
     xor eax , eax
