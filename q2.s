@@ -26,7 +26,7 @@ main:
 
     xor eax , eax
     lea rdi , [output_int]
-    mov edx , [number] 
+    mov rsi , [number] 
     call printf
 
     xor eax , eax
