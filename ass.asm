@@ -16,6 +16,10 @@ main :
     lea rsi , [ number ]
     call scanf
 
+    xor eax , eax
+    lea rdi , [ number ] ; first parameter
+    call printf
+
     add rsp , 16
     leave
     ret
