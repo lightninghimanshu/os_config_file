@@ -31,8 +31,8 @@ main :
     call scanf
 
     xor eax , eax
-    lea rdi , [formats]
-    mov edx , [string] ; first parameter
+    lea rsi , [formats]
+    mov rsi , [string] ; first parameter
     call printf
 
     add rsp , 96
@@ -42,7 +42,8 @@ main :
 section .data
    msg : db " Enter a number : ", 0
    formatn : db "%d", 0
-   formats : dd "%s", 0
+   formats : dd "%s",10,0
+   string times 100 db 0
+   
 section .bss
    number resb 4
-   string resw 4
