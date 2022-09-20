@@ -1,14 +1,12 @@
-global main
-extern printf , scanf
-
 section .text
+extern printf , scanf
+global main
 main :
     push rbp
     mov rbp , rsp
-    sub rsp , 96
 
     xor eax , eax
-    lea rdi , [msg] ; first parameter
+    lea rdi , [msg] 
     call printf
     
     mov eax , 0
@@ -18,11 +16,11 @@ main :
 
     xor eax , eax
     lea rdi , [formatn]
-    mov edx , [number] ; first parameter
+    mov edx , [number] 
     call printf
 
     xor eax , eax
-    lea rdi , [msg] ; first parameter
+    lea rdi , [msg2] 
     call printf    
 
     mov eax , 0
@@ -32,15 +30,16 @@ main :
 
     xor eax , eax
     lea rdi , [formats]
-    lea rsi , [string] ; first parameter
+    lea rsi , [string] 
     call printf
 
-    add rsp , 96
     leave
     ret
 
+
 section .data
    msg : db " Enter a number : ", 0
+   msg2 : db " Enter a string : ", 0
    formatn : db "%d", 0
    formats : dd "%s",10,0
    string times 100 db 0
