@@ -1,6 +1,17 @@
-extern printf , scanf
-global main
+section .data
+   msg : db "Enter a number :", 0
+   msg2 : db "Enter a string :", 0
+   formatni : db "%d", 0
+   formatno : db "%d", 10, 0
+   formatsi : db "%s",0
+   formatso : db "%s",10,0
+   string times 100 db 0   
+section .bss
+   number resb 16
 section .text
+extern printf 
+extern scanf
+global main
 main:
     push rbp
     mov rbp , rsp
@@ -38,15 +49,3 @@ main:
     leave
     ret
 
-
-section .data
-   msg : db " Enter a number : ", 0
-   msg2 : db " Enter a string : ", 0
-   formatni : db "%d", 0
-   formatno : db "%d", 10, 0
-   formatsi : db "%s",0
-   formatso : db "%s",10,0
-   string times 100 db 0
-   
-section .bss
-   number resb 16
