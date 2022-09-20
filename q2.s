@@ -1,7 +1,7 @@
 section .text
 extern printf , scanf
 global main
-main :
+main:
     push rbp
     mov rbp , rsp
     sub rsp , 96
@@ -43,7 +43,7 @@ section .data
    msg : db " Enter a number : ", 0
    msg2 : db " Enter a string : ", 0
    formatn : db "%d", 0
-   formats : dd "%s",10,0
+   formats : db "%s",10,0
    string times 100 db 0
    
 section .bss
