@@ -5,7 +5,7 @@ section .text
 main :
     push rbp
     mov rbp , rsp
-    sub rsp , 16
+    sub rsp , 96
 
     xor eax , eax
     lea rdi , [msg] ; first parameter
@@ -35,14 +35,14 @@ main :
     mov edx , [string] ; first parameter
     call printf
 
-    add rsp , 16
+    add rsp , 96
     leave
     ret
 
 section .data
    msg : db " Enter a number : ", 0
    formatn : db "%d", 0
-   formats : db "%s", 0
+   formats : dd "%s", 0
 section .bss
    number resb 4
    string resw 4
