@@ -40,11 +40,11 @@ main:
 
 
 section .data
-   enter_promt : db " Enter: ", 0, 10
-   input_int : db "%d", 0, 10
-   input_str : dd "%s",0, 10
-   output_int : db "%d", 0
-   output_str : db "%s", 0
+   enter_promt : db " Enter: ", 0
+   input_int : db "%d", 0
+   input_str : dd "%s",0
+   output_int : db "%d", 0, 10
+   output_str : db "%s", 0, 10
    string times 100 db 0
    
 section .bss
