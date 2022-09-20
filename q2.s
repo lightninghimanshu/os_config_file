@@ -4,6 +4,7 @@ global main
 main :
     push rbp
     mov rbp , rsp
+    sub rsp , 96
 
     xor eax , eax
     lea rdi , [msg] 
@@ -33,6 +34,7 @@ main :
     lea rsi , [string] 
     call printf
 
+    add rsp , 96
     leave
     ret
 
