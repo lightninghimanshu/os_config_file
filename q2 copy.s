@@ -1,6 +1,6 @@
-section .text
 extern printf , scanf
 global main
+section .text
 main:
     push rbp
     mov rbp , rsp
