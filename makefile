@@ -1,3 +1,3 @@
 all: 
-	yasm q2.s -f elf64 -o q2.o
-	gcc -no-pie q2.o
+	yasm himanshu_21256.s -f elf64 -o himanshu_21256.o
+	gcc -no-pie himanshu_21256.o
