@@ -17,6 +17,7 @@ main :
     call scanf
 
     xor eax , eax
+    lea rdi , [ format]
     mov edx , [ number ] ; first parameter
     call printf
 
@@ -26,7 +27,6 @@ main :
 
 section .data
    msg : db " Enter a number : " , 0
-   msg2 : db " Looping % d of % d " , 10,0
    format : db " % d " , 0
 section .bss
    number resb 4
