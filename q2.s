@@ -1,50 +1,49 @@
-section .text
-extern printf , scanf
 global main
+extern printf
+extern scanf
+section .text
 main:
     push rbp
-    mov rbp , rsp
-    sub rsp , 96
+    mov rbp , rsp 
 
-    xor eax , eax
-    lea rdi , [msg] 
+    xor eax,eax
+    lea rdi, [msgN]
     call printf
+
+    mov eax ,0
+    lea rdi, [fmtN]
+    lea rsi, [number]
+    call scanf
+
+    xor eax,eax
+    lea rdi, [msgS]
+    call printf
+
+    mov eax ,0
+    lea rdi, [fmtS]
+    lea rsi, [string]
+    call scanf
+
+    xor eax,eax
+    mov rdi, PfmtN
+    mov rsi, [number]
+    call printf
+
     
-    mov eax , 0
-    lea rdi , [formatn]
-    lea rsi , [number]
-    call scanf
-
-    xor eax , eax
-    lea rdi , [formatn]
-    mov edx , [number] 
+    xor eax,eax
+    mov rdi, PfmtS
+    lea rsi, [string]
     call printf
 
-    xor eax , eax
-    lea rdi , [msg2] 
-    call printf    
-
-    mov eax , 0
-    lea rdi , [formats]
-    lea rsi , [string]
-    call scanf
-
-    xor eax , eax
-    lea rdi , [formats]
-    lea rsi , [string] 
-    call printf
-
-    add rsp , 96
     leave
     ret
-
-
 section .data
-   msg : db " Enter a number : ", 0
-   msg2 : db " Enter a string : ", 0
-   formatn : db "%d", 0
-   formats : dd "%s",10,0
-   string times 100 db 0
-   
+    msgN: db "Enter a Number : ",0
+    msgS: db "Enter a String : ",0
+    fmtN: db "%d",0
+    PfmtN: db "%d",10,0
+    fmtS: db "%s",0
+    PfmtS: db "%s",10,0
 section .bss
-   number resb 4
+    number resb 32
+    string resb 32
