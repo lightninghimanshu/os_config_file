@@ -16,7 +16,7 @@ main:
     call scanf
 
     xor eax , eax
-    lea rdi , [formatni]
+    lea rdi , [formatno]
     mov edx , [number] 
     call printf
 
@@ -30,7 +30,7 @@ main:
     call scanf
 
     xor eax , eax
-    lea rdi , [formatsi]
+    lea rdi , [formatso]
     lea rsi , [string] 
     call printf
 
